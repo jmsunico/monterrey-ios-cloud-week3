@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -30,23 +31,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aEP-RA-Y5J">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="itemSize" width="200" height="200"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="5gm-bY-VcT">
-                                <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="5gm-bY-VcT" customClass="cellView" customModule="openLibrary3" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="114" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QPZ-tJ-nPe">
+                                            <rect key="frame" x="8" y="8" width="184" height="184"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="QPZ-tJ-nPe" firstAttribute="leading" secondItem="5gm-bY-VcT" secondAttribute="leadingMargin" id="9ib-CV-fL5"/>
+                                    <constraint firstItem="QPZ-tJ-nPe" firstAttribute="top" secondItem="5gm-bY-VcT" secondAttribute="topMargin" id="LyS-Ik-xkQ"/>
+                                    <constraint firstItem="QPZ-tJ-nPe" firstAttribute="trailing" secondItem="5gm-bY-VcT" secondAttribute="trailingMargin" id="RH5-2q-eqM"/>
+                                    <constraint firstItem="QPZ-tJ-nPe" firstAttribute="bottom" secondItem="5gm-bY-VcT" secondAttribute="bottomMargin" id="qiq-21-bEI"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="cellImage" destination="QPZ-tJ-nPe" id="zX2-gv-fba"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell2" id="K0h-lN-h1K" customClass="sectionHeader" customModule="openLibrary3" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="64" width="414" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHR-ag-eue">
+                                    <rect key="frame" x="127" y="8" width="161" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.60784316059999999" green="0.80392158030000005" blue="0.60784316059999999" alpha="1" colorSpace="deviceRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <connections>
+                                <outlet property="sectionHeaderLabel" destination="vHR-ag-eue" id="PHp-CS-0Kn"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="0ZJ-Z5-gnY" id="Akb-zP-fmr"/>
                             <outlet property="delegate" destination="0ZJ-Z5-gnY" id="w7C-r6-MhB"/>

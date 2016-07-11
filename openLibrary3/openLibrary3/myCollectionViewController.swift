@@ -12,7 +12,7 @@ private let reuseIdentifier = "Cell"
 
 class myCollectionViewController: UICollectionViewController {
 
-	struct section{
+	struct Section{
 		var name: String
 		var images: [UIImage]
 		init(name: String, images: [UIImage]){
@@ -20,9 +20,13 @@ class myCollectionViewController: UICollectionViewController {
 			self.images = images
 		}
 	}
+	var sections = [Section]()
+	
 	
 	@IBAction func searchTextField(sender: UITextField) {
-		print(googleCustomSearch(sender.text!))
+		let section = Section(name: sender.text!, images: googleCustomSearch(sender.text!))
+		sections.append(section)
+		self.collectionView!.reloadData()
 	}
 	
 	func googleCustomSearch (term: String) -> [UIImage]{
@@ -37,8 +41,10 @@ class myCollectionViewController: UICollectionViewController {
 				let linkString = (item as! NSDictionary)["link"] as! String
 				let linkURL = NSURL(string: linkString)
 				let linkData = NSData(contentsOfURL: linkURL!)
-				if let image = UIImage(data: linkData!){
-					images.append(image)
+				if linkData != nil{
+					if let image = UIImage(data: linkData!){
+						images.append(image)
+					}
 				}
 			}
 		} catch _{
@@ -54,7 +60,7 @@ class myCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        // self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -78,23 +84,24 @@ class myCollectionViewController: UICollectionViewController {
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return self.sections.count
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return self.sections[section].images.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
-    
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! cellView
+		cell.cellImage.image = sections[indexPath.section].images[indexPath.item]
+		
         // Configure the cell
     
         return cell
     }
-
+	
     // MARK: UICollectionViewDelegate
 
     /*
@@ -125,5 +132,12 @@ class myCollectionViewController: UICollectionViewController {
     
     }
     */
-
+	
+	override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+		let cell2 = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Cell2", forIndexPath: indexPath) as! sectionHeader
+		
+		cell2.sectionHeaderLabel.text = sections[indexPath.section].name
+		return cell2
+	}
+	
 }
