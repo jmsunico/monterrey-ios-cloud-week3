@@ -21,7 +21,15 @@ class SearchISBNViewController: UIViewController {
 		return false
 	}
 	
+	func textFieldShouldReturn(textField: UITextField) -> Bool {
+		print("TextField should return method called")
+		textField.resignFirstResponder()
+		return true
+	}
 	
+	@IBAction func editingEnd(sender: AnyObject) {
+		self.resignFirstResponder()
+	}
 	@IBAction func searchTextField(sender: UITextField) {
 		var newISBN : String? = sender.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		if (newISBN != nil) && (newISBN! != ""){
@@ -40,9 +48,9 @@ class SearchISBNViewController: UIViewController {
 			} else{
 				newSection = searchISBN(newISBN!)
 				if (newSection.errors == ""){
-					self.isbnLabel.text = newSection.isbn
-					self.titleLabel.text = newSection.title
-					self.authorsLabel.text = newSection.authors
+					self.isbnLabel.text = "ISBN: " + newSection.isbn
+					self.titleLabel.text = "TÍTULO: " + newSection.title
+					self.authorsLabel.text = "AUTOR(ES): " + newSection.authors
 					self.coverImage.image = newSection.cover
 				}
 				else{
