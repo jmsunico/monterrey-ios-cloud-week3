@@ -38,17 +38,23 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eT3-hX-R4U">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHh-yf-cPP">
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hit-jq-KmX">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="n5b-dN-fq0"/>
+                                            <constraint firstAttribute="height" constant="44" id="A2m-qC-WuD"/>
                                         </constraints>
-                                        <state key="normal" title="Añadir un libro a la colección"/>
-                                        <connections>
-                                            <action selector="addBookButton:" destination="5aw-Jm-6Qa" eventType="touchUpInside" id="Qqg-ec-i0q"/>
-                                            <segue destination="a8J-ah-yyp" kind="show" identifier="SearchISBN" id="OCX-rY-MMF"/>
-                                        </connections>
-                                    </button>
+                                        <items>
+                                            <navigationItem id="mnn-hl-A4C">
+                                                <nil key="title"/>
+                                                <barButtonItem key="rightBarButtonItem" systemItem="add" id="HVo-Ed-rWk">
+                                                    <connections>
+                                                        <action selector="addBookButton:" destination="5aw-Jm-6Qa" id="WO7-i3-HpA"/>
+                                                        <segue destination="a8J-ah-yyp" kind="show" identifier="searchISBN" id="D7A-vt-Q8z"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P6C-An-Skn">
                                         <rect key="frame" x="0.0" y="44" width="414" height="672"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -65,9 +71,13 @@
                                     </tableView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="wHh-yf-cPP" firstAttribute="leading" secondItem="eT3-hX-R4U" secondAttribute="leading" id="N0x-a3-QSy"/>
-                                    <constraint firstItem="P6C-An-Skn" firstAttribute="leading" secondItem="wHh-yf-cPP" secondAttribute="leading" id="afw-fw-8fw"/>
-                                    <constraint firstAttribute="trailing" secondItem="wHh-yf-cPP" secondAttribute="trailing" id="qx2-eN-tYV"/>
+                                    <constraint firstAttribute="bottom" secondItem="P6C-An-Skn" secondAttribute="bottom" id="4Wd-Yn-kRW"/>
+                                    <constraint firstItem="P6C-An-Skn" firstAttribute="top" secondItem="hit-jq-KmX" secondAttribute="bottom" id="8b5-AN-OVx"/>
+                                    <constraint firstAttribute="trailing" secondItem="hit-jq-KmX" secondAttribute="trailing" id="ILe-Hu-tKu"/>
+                                    <constraint firstAttribute="trailing" secondItem="P6C-An-Skn" secondAttribute="trailing" id="U1h-gi-hMk"/>
+                                    <constraint firstItem="P6C-An-Skn" firstAttribute="leading" secondItem="eT3-hX-R4U" secondAttribute="leading" id="W59-ok-oDm"/>
+                                    <constraint firstItem="hit-jq-KmX" firstAttribute="leading" secondItem="eT3-hX-R4U" secondAttribute="leading" id="gaq-rF-oBs"/>
+                                    <constraint firstItem="hit-jq-KmX" firstAttribute="top" secondItem="eT3-hX-R4U" secondAttribute="top" id="yF1-Ff-Jyn"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -125,7 +135,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search results:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ou-Ha-TJm">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISBN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cW6-Xk-BiH">
@@ -134,7 +144,7 @@
                                                             <constraint firstAttribute="height" constant="44" id="iTV-pb-YAq"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTr-wV-bOp">
@@ -144,7 +154,7 @@
                                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="88" id="rDe-43-1nZ"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AUTHORS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyE-QX-4xy">
@@ -154,7 +164,7 @@
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="wjF-tU-4DM"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -257,7 +267,7 @@
                                             <constraint firstAttribute="height" constant="44" id="ZTa-ZJ-Ff0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Av9-Bz-I4p">
@@ -267,7 +277,7 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="jQC-xh-lUy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AUTHORS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKa-hA-Tac">
@@ -277,7 +287,7 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Lh5-7B-Vla"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>

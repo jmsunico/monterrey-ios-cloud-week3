@@ -54,8 +54,8 @@ public var sections = [Section]()
 
 class myTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
-	@IBAction func addBookButton(sender: UIButton) {
-		performSegueWithIdentifier("SearchISBN", sender: UIButton.self)
+	@IBAction func addBookButton(sender: UIBarButtonItem) {
+		performSegueWithIdentifier("SearchISBN", sender: UIBarButtonItem.self)
 	}
 	
 	@IBOutlet weak var myTableView: UITableView!
