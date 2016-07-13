@@ -17,9 +17,13 @@ class DetailsViewController: UIViewController {
 
 	
 	@IBOutlet weak var coverImage: UIImageView!
-	@IBAction func returnButton(sender: UIButton) {
+	
+	
+	@IBAction func returnButton(sender: UIBarButtonItem) {
 		print("pressed return button on detailsView")
-}
+	}
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
